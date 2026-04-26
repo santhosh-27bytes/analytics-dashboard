@@ -6,14 +6,6 @@
   <b>Transform raw academic data into actionable insights</b>
 </p>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Status-Live-success?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Frontend-HTML%20%7C%20CSS%20%7C%20JavaScript-blue?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Charts-Chart.js-orange?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Data-SheetJS%20(XLSX)-green?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/UI-Responsive-critical?style=for-the-badge"/>
-</p>
-
 ---
 
 ## 🚀 Live Application
