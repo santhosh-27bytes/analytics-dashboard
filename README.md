@@ -18,7 +18,7 @@
 
 ## 🚀 Live Application
 
-🔗 **Access the Dashboard:** https://your-live-link.com
+🔗 **Access the Dashboard:** https://analytics-pro-07.netlify.app/
 
 ---
 
