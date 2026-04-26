@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Pro</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">Analytics Pro</div>
+        <nav>
+            <button class="nav-btn active" onclick="switchPage('overview')">📊 Class Overview</button>
+            <button class="nav-btn" onclick="switchPage('peer')">👥 Students Comparison</button>
+            <button class="nav-btn" onclick="switchPage('subjects')">📚 Subject Analysis</button>
+            <button class="nav-btn" onclick="switchPage('results')">🏆 View Result</button>
+            <button class="nav-btn" onclick="switchPage('report')">📄 Student Report</button>
+        </nav>
+        <div class="upload-section">
+            <label for="fileInput" class="custom-file-upload">
+                📁 Upload File (Excel, CSV, PDF)
+            </label>
+            <input type="file" id="fileInput" accept=".xlsx, .xls, .csv, .pdf" style="display:none;">
+    </aside>
+
+    <main class="content">
+        <section id="overview" class="page active">
+            <header class="page-header">
+                <h1>Class Overview</h1>
+                <select id="overviewChartType" class="chart-select" onchange="updateOverview()">
+                    <option value="bar">Bar Chart</option>
+                    <option value="line">Line Chart</option>
+                </select>
+            </header>
+            <div class="card"><canvas id="overviewCanvas"></canvas></div>
+        </section>
+        <div id="studentModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalTitle">Student List</h2>
+                    <span class="close-btn" onclick="closeModal()">&times;</span>
+                </div>
+                <div id="studentList" class="student-list">
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <section id="peer" class="page">
+            <header class="page-header">
+                <h1>Students Comparison</h1>
+                <select id="peerChartType" class="chart-select" onchange="updatePeerComparison()">
+                    <option value="bar">Bar Chart</option>
+                    <option value="radar">Radar Chart</option>
+                </select>
+            </header>
+            <div class="card controls-card">
+                <div id="peerInputGroup" class="input-group">
+                    <input type="text" class="roll-input" placeholder="Roll No 1">
+                    <input type="text" class="roll-input" placeholder="Roll No 2">
+                </div>
+                <div class="btn-group">
+                    <button class="btn secondary" onclick="addPeerInput()">+ Add Student</button>
+                    <button class="btn primary" onclick="updatePeerComparison()">Compare Students</button>
+                </div>
+            </div>
+            <div class="card"><canvas id="peerCanvas"></canvas></div>
+        </section>
+
+        <section id="subjects" class="page">
+            <header class="page-header">
+                <h1>Subject Analysis</h1>
+                <select id="subChartType" class="chart-select" onchange="analyzeSubjects()">
+                    <option value="bar">Bar Chart</option>
+                    <option value="pie">Pie Chart</option>
+                    <option value="radar">Radar Chart</option>
+                </select>
+            </header>
+            <div class="card">
+                <p>Select subjects to compare averages & pass rates:</p>
+                <div id="subjectGrid" class="subject-checkbox-grid"></div>
+                <button class="btn primary" onclick="analyzeSubjects()" style="margin-top: 15px;">Compare
+                    Selected</button>
+            </div>
+            <div class="card"><canvas id="subjectCanvas"></canvas></div>
+            <div id="subjectMetrics" class="metrics-grid"></div>
+        </section>
+        <section id="results" class="page">
+            <h2>View Result</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Roll No</th>
+                        <th>Name</th>
+                        <th>Percentage</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsBody"></tbody>
+            </table>
+        </section>
+<div id="report" class="page">
+    <h2>Student Report Card</h2>
+
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search by Name, Roll No, or ID...">
+        <button onclick="loadStudentReport()">View Report</button>
+    </div>
+
+    <div id="studentDetails" class="report-box" style="display: none;">
+        <div class="student-info-header">
+            <div>
+                <h3 id="resName">Student Name</h3>
+                <p>ID: <span id="resID">---</span> | Roll No: <span id="resRoll">---</span></p>
+            </div>
+            <div class="overall-grade">
+                <span>Overall Status</span>
+                <h4 id="resStatus">PASS</h4>
+            </div>
+        </div>
+
+        <table class="report-table">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Max Marks</th>
+                    <th>Obtained</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody id="reportTableBody">
+                </tbody>
+        </table>
+    </div>
+</div>
+    </main>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
