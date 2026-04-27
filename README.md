@@ -12,6 +12,8 @@
 
 🔗 **Access the Dashboard:** https://analytics-pro-07.netlify.app/
 
+🔍 Also available on Google (search: SmartStudent Analyzer)
+
 ---
 
 ## 📖 About the Project
